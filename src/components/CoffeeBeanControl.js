@@ -37,12 +37,20 @@ class CoffeeBeanControl extends Component {
     const selectedBean = this.state.mainCoffeeBeanList.filter(bean => bean.id === id)[0];
     this.setState({selectedBean: selectedBean});
   }
+
+  handleDeletingCoffeeBean = (id) => {
+    const newMainCoffeeBeanList = this.state.mainCoffeeBeanList.filter(bean => bean.id !== id);
+    this.setState({
+      mainCoffeeBeanList: newMainCoffeeBeanList,
+      selectedBean: null
+    });
+  }
   
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.selectedBean != null) {
-      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedBean} />
+      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingCoffeeBean} />
       buttonText = "Return to Coffee Bean List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;

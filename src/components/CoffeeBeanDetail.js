@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function CoffeeBeanDetail(props) {
-  const { bean } = props;
+  const { bean, onClickingDelete } = props;
 
   return (
     <>
@@ -10,13 +10,15 @@ function CoffeeBeanDetail(props) {
       <h3>{bean.name} - ${bean.price}/lb</h3>
       <p>origin: {bean.origin}</p>
       <p>roast: {bean.roast}</p>
+      <button onClick={()=> onClickingDelete(bean.id) }>Delete Coffee Bean</button>
       <hr/>
     </>
   );
 }
 
 CoffeeBeanDetail.propTypes = {
-  bean: PropTypes.object
+  bean: PropTypes.object,
+  onClickingDelete: PropTypes.func
 };
 
 export default CoffeeBeanDetail;
