@@ -10,6 +10,7 @@ function CoffeeBeanDetail(props) {
       <h3>{bean.name} - ${bean.price}/lb</h3>
       <p>origin: {bean.origin}</p>
       <p>roast: {bean.roast}</p>
+      <button onClick={ props.onClickingEdit }>Update Coffee Bean Detail</button>
       <button onClick={()=> onClickingDelete(bean.id) }>Delete Coffee Bean</button>
       <hr/>
     </>
@@ -18,7 +19,8 @@ function CoffeeBeanDetail(props) {
 
 CoffeeBeanDetail.propTypes = {
   bean: PropTypes.object,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default CoffeeBeanDetail;

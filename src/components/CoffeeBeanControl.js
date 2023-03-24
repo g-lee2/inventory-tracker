@@ -10,7 +10,8 @@ class CoffeeBeanControl extends Component {
     this.state = {
       formVisibleOnPage: false,
       mainCoffeeBeanList: [],
-      selectedBean: null
+      selectedBean: null,
+      editing: false
     };
   }
 
@@ -18,7 +19,8 @@ class CoffeeBeanControl extends Component {
     if (this.state.selectedBean != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedBean: null
+        selectedBean: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({
@@ -45,15 +47,38 @@ class CoffeeBeanControl extends Component {
       selectedBean: null
     });
   }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
+  }
+
+  handleEditingBeanInList = (beanToEdit) => {
+    const editedMainCoffeeBeanList = this.state.mainCoffeeBeanList
+      .filter(bean => bean.id !== this.state.selectedBean.id)
+      .concat(beanToEdit);
+    this.setState({
+        mainCoffeeBeanList: editedMainCoffeeBeanList,
+        editing: false,
+        selectedBean: null
+      });
+  }
   
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedBean != null) {
-      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedBean} onClickingDelete = {this.handleDeletingCoffeeBean} />
+    if (this.state.editing ) {      
+      currentlyVisibleState = <EditCoffeeBeanForm bean={this.state.selectedBean} onEditBean = {this.handleEditingBeanInList} />
+      buttonText = "Return to Coffee Bean List";
+    } else if (this.state.selectedBean != null) {
+      currentlyVisibleState = 
+      <CoffeeBeanDetail 
+        bean={this.state.selectedBean} 
+        onClickingDelete={this.handleDeletingCoffeeBean}
+        onClickingEdit={this.handleEditClick} 
+      />
       buttonText = "Return to Coffee Bean List";
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;
+      currentlyVisibleState=<NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;
       buttonText = "Return to Coffee Bean List"; 
     } else {
       currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} onBeanSelection={this.handleChangingSelectedBean}/>;;

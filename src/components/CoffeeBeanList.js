@@ -8,7 +8,7 @@ function CoffeeBeanList(props) {
       <hr />
       {props.coffeeBeanList.map((bean) =>
         <CoffeeBean
-          whenBeanClicked = { props.onBeanSelection }
+          whenBeanClicked={ props.onBeanSelection }
           name={bean.name}
           origin={bean.origin}
           price={bean.price}
