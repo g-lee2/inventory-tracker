@@ -9,7 +9,8 @@ class CoffeeBeanControl extends Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainCoffeeBeanList: []
+      mainCoffeeBeanList: [],
+      selectedBean: null
     };
   }
 
@@ -24,15 +25,23 @@ class CoffeeBeanControl extends Component {
     this.setState({mainCoffeeBeanList: newMainCoffeeBeanList,
                   formVisibleOnPage: false });
   }
+
+  handleChangingSelectedBean = (id) => {
+    const selectedBean = this.state.mainCoffeeBeanList.filter(bean => bean.id === id)[0];
+    this.setState({selectedBean: selectedBean});
+  }
   
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+    if (this.state.selectedBean != null) {
+      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedTicket} />
+      buttonText = "Return to Coffee Bean List";
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;
       buttonText = "Return to Coffee Bean List"; 
     } else {
-      currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} />;;
+      currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} onBeanSelection={this.handleChangingSelectedBean}/>;;
       buttonText = "Add Coffee Bean";
     }
     return (
