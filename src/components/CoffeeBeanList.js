@@ -10,9 +10,6 @@ function CoffeeBeanList(props) {
         <CoffeeBean
           whenBeanClicked={ props.onBeanSelection }
           name={bean.name}
-          origin={bean.origin}
-          price={bean.price}
-          roast={bean.roast}
           id={bean.id}
           key={bean.id}/>
       )}
