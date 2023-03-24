@@ -8,7 +8,8 @@ class CoffeeBeanControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainCoffeeBeanList: []
     };
   }
 
@@ -25,7 +26,7 @@ class CoffeeBeanControl extends Component {
       currentlyVisibleState = <NewCoffeeBeanForm />;
       buttonText = "Return to Coffee Bean List"; 
     } else {
-      currentlyVisibleState = <CoffeeBeanList />;
+      currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} />;;
       buttonText = "Add Coffee Bean";
     }
     return (
