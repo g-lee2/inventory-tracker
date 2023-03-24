@@ -15,9 +15,16 @@ class CoffeeBeanControl extends Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedBean != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedBean: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }
 
   handleAddingNewCoffeeBean = (newBean) => {
@@ -35,7 +42,7 @@ class CoffeeBeanControl extends Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.selectedBean != null) {
-      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedTicket} />
+      currentlyVisibleState = <CoffeeBeanDetail bean = {this.state.selectedBean} />
       buttonText = "Return to Coffee Bean List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;

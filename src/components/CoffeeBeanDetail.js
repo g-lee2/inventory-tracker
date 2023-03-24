@@ -1,12 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function CoffeeBeanDetail() {
+function CoffeeBeanDetail(props) {
+  const { bean } = props;
+
   return (
-    <React.Fragment>
-      <h1>Bean Detail</h1>
+    <>
+      <h1>Coffee Bean Detail</h1>
+      <h3>{bean.name} - ${bean.price}/lb</h3>
+      <p>origin: {bean.origin}</p>
+      <p>roast: {bean.roast}</p>
       <hr/>
-    </React.Fragment>
+    </>
   );
 }
+
+CoffeeBeanDetail.propTypes = {
+  bean: PropTypes.object
+};
 
 export default CoffeeBeanDetail;

@@ -6,8 +6,8 @@ function CoffeeBean(props) {
     <>
       <div onClick = {() => props.whenBeanClicked(props.id)}>
         <h3>{props.name} - ${props.price}/lb</h3>
-        <p>{props.origin}</p>
-        <p>{props.roast}</p>
+        <p>origin: {props.origin}</p>
+        <p>roast: {props.roast}</p>
         <hr/>
       </div>
     </>
