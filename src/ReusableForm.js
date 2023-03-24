@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function ReusableForm(props) {
   return (
-    <>
+    <div className="form-container">
       <form onSubmit={props.formSubmissionHandler}>
       <input
           type='text'
@@ -27,7 +27,7 @@ function ReusableForm(props) {
         />
         <button type='submit'>{props.buttonText}</button>
       </form>
-    </>
+    </div>
   );
 }
 

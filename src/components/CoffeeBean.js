@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 function CoffeeBean(props) {
   return (
     <>
-      <div onClick = {() => props.whenBeanClicked(props.id)}>
+      <div onClick = {() => props.whenBeanClicked(props.id)} className="coffee-beans">
         <h3>{props.name}</h3>
-        <hr/>
+        <br />
+        <h4>{props.origin}</h4>
       </div>
     </>
   )
