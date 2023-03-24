@@ -40,6 +40,8 @@ This is an application that allows a user to view a list of all available types 
 
 ## Component Tree
 
+![component tree](/src/assets/img/component-tree.png)
+
 ## Known Bugs
 
 - _No known bugs as of now_
