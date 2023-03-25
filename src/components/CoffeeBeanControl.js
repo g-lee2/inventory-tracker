@@ -53,14 +53,18 @@ class CoffeeBeanControl extends Component {
   }
 
   handleEditingBeanInList = (beanToEdit) => {
-    const editedMainCoffeeBeanList = this.state.mainCoffeeBeanList
-      .filter(bean => bean.id !== this.state.selectedBean.id)
-      .concat(beanToEdit);
+    const editedMainCoffeeBeanList = this.state.mainCoffeeBeanList.map(bean => {
+      if (bean.id === this.state.selectedBean.id) {
+        return beanToEdit;
+      } else {
+        return bean; 
+      }
+    });
     this.setState({
-        mainCoffeeBeanList: editedMainCoffeeBeanList,
-        editing: false,
-        selectedBean: null
-      });
+      mainCoffeeBeanList: editedMainCoffeeBeanList,
+      editing: false,
+      selectedBean: null
+    });
   }
   
   render() {
