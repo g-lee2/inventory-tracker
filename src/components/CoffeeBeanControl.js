@@ -89,12 +89,10 @@ class CoffeeBeanControl extends Component {
       buttonText = "Add Coffee Bean";
     }
     return (
-      <React.Fragment>
-        <div className="main-container">
-          {currentlyVisibleState}
-          <button className="main-button" onClick={this.handleClick}>{buttonText}</button>
-        </div>
-      </React.Fragment>
+      <div className="main-container">
+        {currentlyVisibleState}
+        <button className="main-button" onClick={this.handleClick}>{buttonText}</button>
+      </div>
     );
   }
 }

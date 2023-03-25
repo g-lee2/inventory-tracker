@@ -17,12 +17,12 @@ function NewCoffeeBeanForm(props) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <ReusableForm 
         formSubmissionHandler={handleNewCoffeeBeanFormSubmission}
         buttonText="Add Coffee Bean" 
       />
-    </React.Fragment>
+    </>
   );
 }
 
