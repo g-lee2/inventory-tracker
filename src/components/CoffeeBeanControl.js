@@ -81,13 +81,15 @@ class CoffeeBeanControl extends Component {
       currentlyVisibleState=<NewCoffeeBeanForm onNewBeanCreation={this.handleAddingNewCoffeeBean}/>;
       buttonText = "Return to Coffee Bean List"; 
     } else {
-      currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} onBeanSelection={this.handleChangingSelectedBean}/>;;
+      currentlyVisibleState = <CoffeeBeanList coffeeBeanList={this.state.mainCoffeeBeanList} onBeanSelection={this.handleChangingSelectedBean} />;
       buttonText = "Add Coffee Bean";
     }
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <div className="main-container">
+          {currentlyVisibleState}
+          <button className="main-button" onClick={this.handleClick}>{buttonText}</button>
+        </div>
       </React.Fragment>
     );
   }

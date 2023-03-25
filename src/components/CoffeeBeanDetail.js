@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import beanImage from "../assets/img/coffee-bean.png";
 
 function CoffeeBeanDetail(props) {
   const { bean, onClickingDelete } = props;
@@ -10,17 +11,22 @@ function CoffeeBeanDetail(props) {
   }
 
   return (
-    <>
+    <div className="product-details">
+      <div className="second-bean-image-container">
+        <img src={beanImage} className="second-bean-image" />
+      </div>
       <h1>{bean.name} Detail</h1>
       <h3>Price per pound: ${bean.price}/lb</h3>
       <h3>Origin: {bean.origin}</h3>
       <h3>Roast: {bean.roast}</h3>
       <h3>Coffee Bean available for purchase: {coffeeLeft === 0 ? "Out of Stock" : `${coffeeLeft}lbs`}</h3>
-      <button disabled={coffeeLeft === 0} onClick={sellCoffeeBean}>Sell 1 Pound of Coffee Bean</button>
-      <button onClick={ props.onClickingEdit }>Update Coffee Bean Detail</button>
-      <button onClick={() => onClickingDelete(bean.id) }>Delete Coffee Bean</button>
-      <hr/>
-    </>
+      <hr />
+      <div className="details-page-buttons">
+        <button disabled={coffeeLeft === 0} onClick={sellCoffeeBean}>Sell 1lb</button>
+        <button onClick={ props.onClickingEdit }>Update Detail</button>
+        <button onClick={() => onClickingDelete(bean.id) }>Delete</button>
+      </div>
+    </div>
   );
 }
 

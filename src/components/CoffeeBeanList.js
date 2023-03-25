@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 function CoffeeBeanList(props) { 
   return (
-    <div>
-    <h1 className="product-list">Coffee Bean Products</h1>
+    <div className="product-list-container">
+      <h1 className="product-list">Products</h1>
+      <hr className="product-divider"/>
       <div className="coffee-container">
-        {props.coffeeBeanList.map((bean) =>
+        {props.coffeeBeanList.length === 0 ? <h2 className="no-products">No Products listed</h2> : props.coffeeBeanList.map((bean) =>
           <CoffeeBean
             whenBeanClicked={ props.onBeanSelection }
             name={bean.name}
-            origin={bean.origin}
             id={bean.id}
             key={bean.id}
           />
@@ -22,7 +22,7 @@ function CoffeeBeanList(props) {
 }
 
 CoffeeBeanList.propTypes = {
-  origin: PropTypes.string,
+  name: PropTypes.string,
   coffeeBeanList: PropTypes.array,
   onBeanSelection: PropTypes.func
 };
