@@ -7,15 +7,17 @@ function CoffeeBeanList(props) {
     <div className="product-list-container">
       <h1 className="product-list">Products</h1>
       <hr className="product-divider"/>
-      <div className="coffee-container">
-        {props.coffeeBeanList.length === 0 ? <h2 className="no-products">No Products listed</h2> : props.coffeeBeanList.map((bean) =>
-          <CoffeeBean
-            whenBeanClicked={ props.onBeanSelection }
-            name={bean.name}
-            id={bean.id}
-            key={bean.id}
-          />
-        )}
+      <div className="list-wrapper">
+        <div className="coffee-container">
+          {props.coffeeBeanList.length === 0 ? <h2 className="no-products">No Products Listed</h2> : props.coffeeBeanList.map((bean) =>
+            <CoffeeBean
+              whenBeanClicked={ props.onBeanSelection }
+              name={bean.name}
+              id={bean.id}
+              key={bean.id}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

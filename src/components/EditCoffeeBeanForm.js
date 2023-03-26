@@ -1,9 +1,10 @@
 import React from "react";
-import ReusableForm from "../ReusableForm";
+import ReusableForm from "./ReusableForm";
 import PropTypes from "prop-types";
 
 function EditCoffeeBeanForm(props) {
   const { bean } = props;
+  console.log(bean);
 
   function handleEditBeanFormSubmission(event) {
     event.preventDefault();
@@ -14,7 +15,8 @@ function EditCoffeeBeanForm(props) {
     <>
       <ReusableForm 
         formSubmissionHandler={handleEditBeanFormSubmission} 
-        buttonText="Update Coffee Bean Detail" />
+        buttonText="Update Coffee Bean Detail" 
+      />
     </>
   );
 }

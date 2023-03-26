@@ -64,6 +64,7 @@ button:hover {
 .main-button {
   display: flex;
   justify-content: center;
+  margin-top: 2%;
   margin-bottom: auto;
 }
 
@@ -133,6 +134,15 @@ label {
 
 .product-list-container {
   padding: 3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .coffee-container {
@@ -154,6 +164,7 @@ label {
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: var(--product-height);
 }
 
@@ -210,7 +221,12 @@ label {
 
 .no-products {
   grid-column: 1 / -1;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  margin-top: 2%;
+  margin-bottom: 3%;
 }
 
 .product-divider {
