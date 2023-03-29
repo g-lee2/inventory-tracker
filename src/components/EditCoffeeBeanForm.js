@@ -4,11 +4,16 @@ import PropTypes from "prop-types";
 
 function EditCoffeeBeanForm(props) {
   const { bean } = props;
-  console.log(bean);
 
   function handleEditBeanFormSubmission(event) {
     event.preventDefault();
-    props.onEditBean({name: event.target.name.value, origin: event.target.origin.value, price: parseInt(event.target.price.value), roast: event.target.roast.value, id: bean.id});
+    props.onEditBean({
+      name: event.target.name.value, 
+      origin: event.target.origin.value, 
+      price: parseInt(event.target.price.value), 
+      roast: event.target.roast.value, 
+      quantity: bean.quantity,
+      id: bean.id});
   }
 
   return (

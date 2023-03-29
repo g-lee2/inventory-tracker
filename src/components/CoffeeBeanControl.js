@@ -66,6 +66,22 @@ class CoffeeBeanControl extends Component {
       selectedBean: null
     });
   }
+
+  handleSellingCoffeeBean = (beanId) => {
+    const updatedCoffeeBeanList = this.state.mainCoffeeBeanList.map(bean => {
+      if (bean.id === beanId && bean.quantity > 0) {
+        return { ...bean, quantity: bean.quantity - 1 };
+      }
+      return bean;
+    });
+  
+    const updatedSelectedBean = updatedCoffeeBeanList.find(bean => bean.id === beanId);
+  
+    this.setState({ 
+      mainCoffeeBeanList: updatedCoffeeBeanList, 
+      selectedBean: updatedSelectedBean 
+    });
+  };
   
   render() {
     let currentlyVisibleState = null;
@@ -79,6 +95,7 @@ class CoffeeBeanControl extends Component {
         bean={this.state.selectedBean} 
         onClickingDelete={this.handleDeletingCoffeeBean}
         onClickingEdit={this.handleEditClick} 
+        onClickingSell={this.handleSellingCoffeeBean}
       />
       buttonText = "Return to Coffee Bean List";
     } else if (this.state.formVisibleOnPage) {
